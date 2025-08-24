@@ -1,0 +1,20 @@
+ model Project {
+ id String @id @default(cuid())
+ title String
+ description String
+ image String // store URL, data URI, or base64
+ tags String[] // Postgres text[] (or use a join table)
+ links Json?
+ createdAt DateTime @default(now())
+ }
+
+ model VisitEvent {
+ id String @id @default(cuid())
+ path String
+ country String?
+ ipHash String?
+ ua String?
+ sessionId String?
+ ref String?
+ createdAt DateTime @default(now()) @index
+ }
